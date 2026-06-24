@@ -21,7 +21,7 @@ public class IncidentResource {
     IncidentService incidentService;
 
     @GET
-    @RolesAllowed({"RESPONDER", "ADMIN"})
+    @RolesAllowed({"RESPONDER", "ADMIN", "VICTIM"})
     public Response getAllIncidents() {
         List<IncidentDto> incidents = incidentService.getAllIncidents();
         return Response.ok()
@@ -31,7 +31,7 @@ public class IncidentResource {
 
     @GET
     @Path("/{id}")
-    @RolesAllowed({"RESPONDER", "ADMIN"})
+    @RolesAllowed({"RESPONDER", "ADMIN", "VICTIM"})
     public Response getIncidentById(@PathParam("id") String id) {
         IncidentDto incident = incidentService.getIncidentById(id);
         return Response.ok()
